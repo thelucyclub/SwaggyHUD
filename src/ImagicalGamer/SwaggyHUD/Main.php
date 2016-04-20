@@ -18,10 +18,10 @@ class Main extends PluginBase implements Listener{
     $this->getLogger()->info(C::GREEN . "Enabled!");
     $this->getServer()->getScheduler()->scheduleRepeatingTask(new SwaggyHUD($this), 1);
   }
-  public function getMessage($msg){
+  public function getMessage($this->msg){
     $config = new Config($this->getDataFolder() . "/config.yml", Config::YAML);
     $message = $config->get("Message");
-    $msg = str_replace("&","§",$message);
+    $this->msg = str_replace("&","§",$message);
   }
 }
 class SwaggyHUD extends PluginTask {
@@ -33,7 +33,7 @@ class SwaggyHUD extends PluginTask {
 	}
 	public function onRun($tick){
 		$allplayers = $this->plugin->getServer()->getOnlinePlayers();
-		$message = $this->plugin->getMessage($msg);
+		$message = $this->plugin->getMessage($this>msg);
 		foreach($allplayers as $p) {
 			if($p instanceof Player) {	
                            $p->sendPopup($msg);
