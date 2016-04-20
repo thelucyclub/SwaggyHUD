@@ -29,7 +29,7 @@ class SwaggyHUD extends PluginTask {
   
 	public function onRun($tick){
 		$allplayers = $this->plugin->getServer()->getOnlinePlayers();
-		$config = new Config($this->getDataFolder() . "/config.yml", Config::YAML);
+		$config = $this->getConfig();
 		$format = $config->get("Format");
 		$message1 = $config->get("Message");
 		$message = str_replace("&","§",$message1);
