@@ -33,7 +33,7 @@ class SwaggyHUD extends PluginTask {
 	}
 	public function onRun($tick){
 		$allplayers = $this->plugin->getServer()->getOnlinePlayers();
-		$message = $this->getMessage($msg);
+		$message = $this->plugin->getMessage($msg);
 		foreach($allplayers as $p) {
 			if($p instanceof Player) {	
                            $p->sendPopup($msg);
