@@ -21,7 +21,7 @@ class Main extends PluginBase implements Listener{
   public function getMessage($player){
     $config = new Config($this->getDataFolder() . "/config.yml", Config::YAML);
     $message = $config->get("Message");
-    $msg = str_replace("&","§",$message1);
+    $msg = str_replace("&","§",$message);
   }
 }
 class SwaggyHUD extends PluginTask {
