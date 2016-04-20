@@ -1,5 +1,5 @@
 <?php
-namespace ImagicalGamer\SexySigns;
+namespace ImagicalGamer\SwaggyHUD;
 
 use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
