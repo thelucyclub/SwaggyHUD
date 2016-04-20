@@ -18,7 +18,7 @@ class Main extends PluginBase implements Listener{
     $this->getLogger()->info(C::GREEN . "Enabled!");
     $this->getServer()->getScheduler()->scheduleRepeatingTask(new SwaggyHUD($this), 1);
   }
-  public function getMessage($this->msg){
+  public function getMessage(){
     $config = new Config($this->getDataFolder() . "/config.yml", Config::YAML);
     $message = $config->get("Message");
     $this->msg = str_replace("&","§",$message);
