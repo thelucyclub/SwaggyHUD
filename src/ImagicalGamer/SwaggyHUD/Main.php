@@ -53,6 +53,9 @@ class SwaggyHUD extends PluginTask {
 				if($format === "Tip"){
 				$p->sendTip($message);
 				}
+				if($format === "Sidebar"){
+				$p->sendTip("          " . $message);
+				}
 			}
 		}
 	}
