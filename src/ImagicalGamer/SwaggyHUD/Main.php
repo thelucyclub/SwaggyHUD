@@ -14,16 +14,19 @@ class Main extends PluginBase implements Listener{
 
   public function onEnable(){
     $this->saveDefaultConfig();
-	$config = new Config($this->getDataFolder() . "/config.yml", Config::YAML);
-	$format = $config->get("Format");
+    $config = new Config($this->getDataFolder() . "/config.yml", Config::YAML);
+    $format = $config->get("Format");
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
     $this->getLogger()->info(C::GREEN . "Enabled!");
     $this->getServer()->getScheduler()->scheduleRepeatingTask(new SwaggyHUD($this), 1);
+    $this->getLogger()->notice(C::AQUA . "Message Format: " . $format);
   }
   public function getMessage(){
     $config = new Config($this->getDataFolder() . "/config.yml", Config::YAML);
+    $xyz = $p->getX(), $p->getY(), $p->getZ();
     $message = $config->get("Message");
-    $msg = str_replace("&","§",$message);
+    $m = str_replace("&","§",$message);
+    $ms = str_replace("{XYZ}",$xyz,$m);
 	return $msg;
   }
   public function getFormat(){
