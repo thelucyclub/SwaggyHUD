@@ -14,6 +14,8 @@ class Main extends PluginBase implements Listener{
 
   public function onEnable(){
     $this->saveDefaultConfig();
+	$config = new Config($this->getDataFolder() . "/config.yml", Config::YAML);
+	$format = $config->get("Format");
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
     $this->getLogger()->info(C::GREEN . "Enabled!");
     $this->getServer()->getScheduler()->scheduleRepeatingTask(new SwaggyHUD($this), 1);
@@ -23,6 +25,11 @@ class Main extends PluginBase implements Listener{
     $message = $config->get("Message");
     $msg = str_replace("&","§",$message);
 	return $msg;
+  }
+  public function getFormat(){
+  	$config = new Config($this->getDataFolder() . "/config.yml", Config::YAML);
+	$format = $config->get("Format");
+	return $format;
   }
 }
 class SwaggyHUD extends PluginTask {
@@ -35,9 +42,15 @@ class SwaggyHUD extends PluginTask {
 	public function onRun($tick){
 		$allplayers = $this->plugin->getServer()->getOnlinePlayers();
 		$message = $this->plugin->getMessage();
+		$format = $this->plugin->getFormat();
 		foreach($allplayers as $p) {
 			if($p instanceof Player) {	
-                           $p->sendPopup($message);
+                           if($format === "Popup"){
+						   	$p->sendPopup($message);
+						   }
+						   if($format === "Tip"){
+						   	$p->sendTip($message);
+						   }
 			}
 		}
 	}
