@@ -1,4 +1,6 @@
-#Message Format: Popup or Tip
+#Message Format: Popup, Tip, or Sidebar(expieramental)
 Format: Tip
 #Message
 Message: '&b&lWelcome to {LINE}&cMy Server!'
+#Example sidebar message may look like:
+#Message: '&e-= &8[&a Sidebar&8 ]&e =-{LINE}&7Welcome aboard,{LINE}&7mate!{LINE}&e-=&8 [ &aSidebar&8 ]&e =-'
