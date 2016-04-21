@@ -23,10 +23,8 @@ class Main extends PluginBase implements Listener{
   }
   public function getMessage(){
     $config = new Config($this->getDataFolder() . "/config.yml", Config::YAML);
-    $xyz = $p->getX(), $p->getY(), $p->getZ();
     $message = $config->get("Message");
-    $m = str_replace("&","§",$message);
-    $ms = str_replace("{XYZ}",$xyz,$m);
+    $msg = str_replace("&","§",$message);
 	return $msg;
   }
   public function getFormat(){
@@ -49,11 +47,11 @@ class SwaggyHUD extends PluginTask {
 		foreach($allplayers as $p) {
 			if($p instanceof Player) {	
                            if($format === "Popup"){
-						   	$p->sendPopup($message);
-						   }
-						   if($format === "Tip"){
-						   	$p->sendTip($message);
-						   }
+				$p->sendPopup($message);
+			        }
+				if($format === "Tip"){
+				$p->sendTip($message);
+				}
 			}
 		}
 	}
