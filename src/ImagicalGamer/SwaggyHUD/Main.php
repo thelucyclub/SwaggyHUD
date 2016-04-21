@@ -24,7 +24,8 @@ class Main extends PluginBase implements Listener{
   public function getMessage(){
     $config = new Config($this->getDataFolder() . "/config.yml", Config::YAML);
     $message = $config->get("Message");
-    $msg = str_replace("&","§",$message);
+    $m = str_replace("&","§",$message);
+    $msg = str_replace("{LINE}","\n",$message);
 	return $msg;
   }
   public function getFormat(){
