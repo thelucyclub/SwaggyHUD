@@ -21,7 +21,8 @@ class Main extends PluginBase implements Listener{
   public function getMessage(){
     $config = new Config($this->getDataFolder() . "/config.yml", Config::YAML);
     $message = $config->get("Message");
-    $this->msg = str_replace("&","§",$message);
+    $msg = str_replace("&","§",$message);
+	return $msg;
   }
 }
 class SwaggyHUD extends PluginTask {
@@ -33,10 +34,10 @@ class SwaggyHUD extends PluginTask {
 	}
 	public function onRun($tick){
 		$allplayers = $this->plugin->getServer()->getOnlinePlayers();
-		$message = $this->plugin->getMessage($this>msg);
+		$message = $this->plugin->getMessage();
 		foreach($allplayers as $p) {
 			if($p instanceof Player) {	
-                           $p->sendPopup($msg);
+                           $p->sendPopup($message);
 			}
 		}
 	}
